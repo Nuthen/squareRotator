@@ -1,21 +1,27 @@
 Rotator = class('Rotator')
 
 function Rotator:initialize(radius, width, color)
-	self.radius = radius or 200
-	self.width = width or 30
+	self:setVar(radius, width)
 	
-	self.total = self.radius*8
 	self.percent = 0
 	self.distance = 0
-	self.speedMax = self.radius^2/16
-	self.speedMin = self.speedMax/2
 	self.speed = 0
 	
 	self.accel = self.speedMax/20
 	
 	self.centerX, self.centerY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
 	
-	self.color = color
+	self.color = color or {255, 255, 255}
+end
+
+function Rotator:setVar(radius, width)
+	self.radius = radius or 200
+	self.width = width or 30
+	
+	self.total = self.radius*8
+	self.speedMax = self.radius^2/16
+	self.speedMin = self.speedMax/2
+	--self.speed = 0
 end
 
 function Rotator:update(dt)

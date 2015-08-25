@@ -14,6 +14,7 @@ require 'states.game'
 
 -- entities
 require 'entities.rotator'
+require 'entities.slider'
 
 function love.load()
 	love.window.setTitle(config.windowTitle)
