@@ -1,21 +1,19 @@
 Rotator = class('Rotator')
 
-function Rotator:initialize(radius, width, color)
+function Rotator:initialize(radius, width)
 	self.radius = radius or 200
 	self.width = width or 30
 	
 	self.total = self.radius*8
 	self.percent = 0
 	self.distance = 0
-	self.speedMax = self.radius^2/6
+	self.speedMax = self.radius^2/8
 	self.speedMin = self.speedMax/2
 	self.speed = 0
 	
 	self.accel = self.speedMax/20
 	
 	self.centerX, self.centerY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
-	
-	self.color = color
 end
 
 function Rotator:update(dt)
@@ -38,7 +36,9 @@ function Rotator:update(dt)
 		--self.speed = self.speedMax
 	end
 	
-	self.speed = math.sin(game.t/10) * self.speedMax
+	--self.speed = math.cos(game.t) * self.speedMax
+	
+	self.speed = -20
 end
 
 function Rotator:draw()
@@ -65,8 +65,6 @@ function Rotator:draw()
 	end
 	
 	if #poly > 0 then
-		love.graphics.setColor(self.color)
-		
 		local triangles = love.math.triangulate(poly)
 			
 		for k, tri in pairs(triangles) do
