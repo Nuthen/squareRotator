@@ -38,7 +38,7 @@ function Rotator:update(dt)
 		--self.speed = self.speedMax
 	end
 	
-	self.speed = math.sin(game.t/100) * self.speedMax * game.t / 100 * 1000
+	self.speed = math.sin(game.t/100) * self.speedMax * game.t / 100
 	
 	local r,g,b,a = HSL((game.t*5) % 255, (self.radius*5 + game.t) % 255, 255 - 255*self.percent, 255) -- tile colors generated over HSL color system
 	self.color = {r,g,b,a}
